@@ -22,11 +22,6 @@ module "external_secrets" {
     name = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
     value = module.external_secrets_irsa_role.iam_role_arn
     type = "string"
-    },
-    {
-      name = "prometheus.enabled"
-      value = "true"
-      type = "string"
     }
   ]
 }
