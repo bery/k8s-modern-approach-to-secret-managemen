@@ -6,7 +6,7 @@ module "external_secrets" {
 
   repository    = "https://charts.external-secrets.io"
   chart         = "external-secrets"
-  chart_version = "0.7.0"
+  chart_version = "0.8.3"
 
   create_namespace     = true
   kubernetes_namespace = "external-secrets"
