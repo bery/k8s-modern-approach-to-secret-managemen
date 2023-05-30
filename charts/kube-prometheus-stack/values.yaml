@@ -1,0 +1,10 @@
+kube-prometheus-stack:
+  grafana:
+    admin:
+      existingSecret: grafana-secrets
+    annotations:
+      reloader.stakater.com/auto: "true"
+env:
+  secretMap:
+    admin-password: sandbox/password
+    admin-user: sandbox/username
