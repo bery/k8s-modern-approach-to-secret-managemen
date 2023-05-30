@@ -1,0 +1,42 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  creationTimestamp: "2023-05-30T18:54:00Z"
+  generation: 7
+  labels:
+    argocd.argoproj.io/instance: kube-prometheus-stack
+  name: grafana-es
+  namespace: monitoring
+  resourceVersion: "100938"
+  uid: 65c2201b-2330-462b-8532-78f215a1d716
+spec:
+  data:
+  - remoteRef:
+      conversionStrategy: Default
+      decodingStrategy: None
+      key: sandbox/password
+    secretKey: admin-password
+  - remoteRef:
+      conversionStrategy: Default
+      decodingStrategy: None
+      key: sandbox/user
+    secretKey: admin-user
+  refreshInterval: 1m
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: cluster-secretstore
+  target:
+    creationPolicy: Owner
+    deletionPolicy: Retain
+    name: grafana-secrets
+status:
+  binding:
+    name: grafana-secrets
+  conditions:
+  - lastTransitionTime: "2023-05-30T19:15:04Z"
+    message: Secret was synced
+    reason: SecretSynced
+    status: "True"
+    type: Ready
+  refreshTime: "2023-05-30T19:15:04Z"
+  syncedResourceVersion: 7-6a2a8200944f5084358df24c1437b186

@@ -7,4 +7,4 @@ kube-prometheus-stack:
 env:
   secretMap:
     admin-password: "sandbox/password"
-    admin-user: "sandbox/username"
+    admin-user: "sandbox/user"
