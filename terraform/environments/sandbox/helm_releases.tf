@@ -1,4 +1,4 @@
-module "external_secrets" {
+/* module "external_secrets" {
   source  = "cloudposse/helm-release/aws"
   version = "0.7.0"
 
@@ -24,7 +24,7 @@ module "external_secrets" {
     type = "string"
     }
   ]
-}
+} */
 
 module "argocd" {
   source  = "cloudposse/helm-release/aws"
@@ -44,5 +44,4 @@ module "argocd" {
   timeout                     = 300
   wait                        = true
   eks_cluster_oidc_issuer_url = module.eks.cluster_oidc_issuer_url
-
 }

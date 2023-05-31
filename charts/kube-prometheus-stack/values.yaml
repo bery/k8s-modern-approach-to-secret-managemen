@@ -6,5 +6,5 @@ kube-prometheus-stack:
       reloader.stakater.com/auto: "true"
 env:
   secretMap:
-    admin-password: "sandbox/password"
-    admin-user: "sandbox/user"
+    admin-password: "sandbox/grafana/password"
+    admin-user: "sandbox/grafana/user"
