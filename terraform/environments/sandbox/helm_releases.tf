@@ -1,4 +1,4 @@
-/* module "external_secrets" {
+module "external_secrets" {
   source  = "cloudposse/helm-release/aws"
   version = "0.7.0"
 
@@ -24,7 +24,7 @@
     type = "string"
     }
   ]
-} */
+}
 
 module "argocd" {
   source  = "cloudposse/helm-release/aws"
