@@ -21,18 +21,18 @@ podSecurityContext: {}
 securityContext: {}
 
 service:
-  type: ClusterIP
+  type: NodePort
   # service.port -- For k8s >= 1.19 use port number not name
-  port: 80
+  port: 8080
 
 ingress:
   # ingress.enabled -- Enable ingress
-  enabled: false
-  ingressClassName: ""
+  enabled: true
+  ingressClassName: "nginx"
   # ingress.annotations -- Example `kubernetes.io/ingress.class: nginx` for Nginx Ingress
   annotations: {}
   hosts:
-    - host: cluster.local
+    - host: echoserver.local
       paths:
         - /
   tls: []
@@ -57,8 +57,8 @@ livenessProbe:
     httpHeaders:
     - name: x-echo-code
       value: "200"
-  initialDelaySeconds: 5
-  periodSeconds: 10
+  initialDelaySeconds: 1
+  periodSeconds: 5
   timeoutSeconds: 2
   failureThreshold: 3
   successThreshold: 1
@@ -83,3 +83,13 @@ application:
     file: true
     # application.enable.header -- Enable custom header in response
     header: true
+
+secrets:
+- secretKey: foo-bar
+  remoteRef:
+    key: "/foo/bar"
+    version: v2
+# - secretKey: foo-baz
+#   remoteRef:
+#     key: "/foo/baz"
+#     version: v1
