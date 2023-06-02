@@ -3,10 +3,10 @@ secrets:
   remoteRef:
     key: "/foo/bar"
     version: v2
-# - secretKey: DATASCRIPT_API_KEY
-#   remoteRef:
-#     key: "/foo/baz"
-#     version: v1
+- secretKey: DATASCRIPT_API_KEY
+  remoteRef:
+    key: "/foo/baz"
+    version: v1
 
 # replicaCount -- Pod replicas
 replicaCount: 1
