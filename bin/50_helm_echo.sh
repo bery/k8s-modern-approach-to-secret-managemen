@@ -1,6 +1,6 @@
 #!/bin/bash
-
-kubectl config set-context docker-desktop
+set -e
+kubectl config use-context docker-desktop
 # Install external secrets operator using helm
 helm repo add ealenn https://ealenn.github.io/charts &&
 helm repo update &&

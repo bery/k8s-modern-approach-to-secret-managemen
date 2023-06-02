@@ -15,6 +15,7 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         checksum/secrets: {{ include (print $.Template.BasePath "/external-secret.yaml") . | sha256sum }}
+        reloader.stakater.com/auto: "true"
       labels:
         app.kubernetes.io/name: {{ include "echo-server.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
@@ -30,6 +31,8 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
+          lifecycle:
+            terminationGracePeriodSeconds: 5
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:

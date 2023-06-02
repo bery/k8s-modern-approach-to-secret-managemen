@@ -1,3 +1,13 @@
+secrets:
+- secretKey: DATASCRIPT_DATABASE_PASSWORD
+  remoteRef:
+    key: "/foo/bar"
+    version: v2
+# - secretKey: DATASCRIPT_API_KEY
+#   remoteRef:
+#     key: "/foo/baz"
+#     version: v1
+
 # replicaCount -- Pod replicas
 replicaCount: 1
 
@@ -83,13 +93,3 @@ application:
     file: true
     # application.enable.header -- Enable custom header in response
     header: true
-
-secrets:
-- secretKey: foo-bar
-  remoteRef:
-    key: "/foo/bar"
-    version: v2
-# - secretKey: foo-baz
-#   remoteRef:
-#     key: "/foo/baz"
-#     version: v1
