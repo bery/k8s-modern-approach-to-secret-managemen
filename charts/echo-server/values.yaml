@@ -1,7 +1,7 @@
 secrets:
 - secretKey: DATASCRIPT_DATABASE_PASSWORD
   remoteRef:
-    key: "/foo/bar"
+    key: "/db/password"
     version: v1
 
 enableAutoReload: false
