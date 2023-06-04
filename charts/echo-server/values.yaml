@@ -2,12 +2,9 @@ secrets:
 - secretKey: DATASCRIPT_DATABASE_PASSWORD
   remoteRef:
     key: "/foo/bar"
-    version: v2
-- secretKey: DATASCRIPT_API_KEY
-  remoteRef:
-    key: "/foo/baz"
     version: v1
 
+enableAutoReload: false
 # replicaCount -- Pod replicas
 replicaCount: 1
 
@@ -80,16 +77,16 @@ application:
       ping: false
   enable:
     # application.enable.host -- Enable host in response
-    host: true
+    host: false
     # application.enable.http -- Enable http in response
-    http: true
+    http: false
     # application.enable.request -- Enable request in response
-    request: true
+    request: false
     # application.enable.cookies -- Enable cookies in response
-    cookies: true
+    cookies: false
     # application.enable.environment -- Enable environment in response
     environment: true
     # application.enable.file -- Enable file in response
-    file: true
+    file: false
     # application.enable.header -- Enable custom header in response
-    header: true
+    header: false

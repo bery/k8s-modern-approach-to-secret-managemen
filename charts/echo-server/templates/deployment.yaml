@@ -4,6 +4,12 @@ metadata:
   name: {{ include "echo-server.fullname" . }}
   labels:
 {{ include "echo-server.labels" . | indent 4 }}
+  annotations:
+    checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+    checksum/secrets: {{ include (print $.Template.BasePath "/external-secret.yaml") . | sha256sum }}
+    {{ if .Values.enableAutoReload }}
+    reloader.stakater.com/auto: "true"
+    {{ end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -12,10 +18,6 @@ spec:
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
-      annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
-        checksum/secrets: {{ include (print $.Template.BasePath "/external-secret.yaml") . | sha256sum }}
-        reloader.stakater.com/auto: "true"
       labels:
         app.kubernetes.io/name: {{ include "echo-server.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
