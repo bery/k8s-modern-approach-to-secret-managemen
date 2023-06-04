@@ -3,3 +3,5 @@ secrets:
   remoteRef:
     key: "/db/password"
     version: v2
+
+enableAutoReload: true
