@@ -7,7 +7,7 @@ metadata:
   annotations:
     checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     checksum/secrets: {{ include (print $.Template.BasePath "/external-secret.yaml") . | sha256sum }}
-    {{ if .Values.enableAutoReload }}
+    {{ if .Values.enableAutoReloader }}
     reloader.stakater.com/auto: "true"
     {{ end }}
 spec:

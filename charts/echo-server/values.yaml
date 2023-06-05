@@ -4,9 +4,9 @@ secrets:
     key: "/db/password"
     version: v1
 
-enableAutoReload: false
+enableAutoReloader: false
 # replicaCount -- Pod replicas
-replicaCount: 1
+replicaCount: 3
 
 image:
   # image.repository -- https://hub.docker.com/r/ealen/echo-server

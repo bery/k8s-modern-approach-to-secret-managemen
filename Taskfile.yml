@@ -1,0 +1,31 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  extrernal-secrets-install:
+    cmds:
+      - ./bin/30_helm_es.sh
+  extrernal-secrets-create-store:
+    cmds:
+      - ./bin/40_helm_es_store.sh
+  echo-install:
+    cmds:
+      - ./bin/50_helm_echo.sh
+  echo-update:
+    cmds:
+      - ./bin/60_helm_echo_v2.sh
+  extrernal-secrets-update-store:
+    cmds:
+      - ./bin/70_store_update.sh
+  extrernal-secrets-update-store-after-updater:
+    cmds:
+      - ./bin/90_store_update.sh
+  echo-update-with-reloader:
+    cmds:
+      - ./bin/80_helm_echo_reloader.sh
+  cleanup:
+    cmds:
+      - kubectl config use-context docker-desktop
+      - helm del echo-server --namespace echo-server
+      - helm del external-secrets --namespace external-secrets
