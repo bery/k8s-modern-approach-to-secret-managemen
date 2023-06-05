@@ -27,5 +27,5 @@ tasks:
   cleanup:
     cmds:
       - kubectl config use-context docker-desktop
-      - helm del echo-server --namespace echo-server
-      - helm del external-secrets --namespace external-secrets
+      - kubectl delete ns echo-server
+      - kubectl delete ns external-secrets
