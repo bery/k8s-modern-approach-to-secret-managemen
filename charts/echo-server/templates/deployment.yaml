@@ -6,6 +6,7 @@ metadata:
 {{ include "echo-server.labels" . | indent 4 }}
   annotations:
     {{ if .Values.enableAutoReloader }}
+    # This annotation is used by the stakater reloader to detect changes in the configmap and secrets
     reloader.stakater.com/auto: "true"
     {{ end }}
 spec:
@@ -20,6 +21,7 @@ spec:
         app.kubernetes.io/name: {{ include "echo-server.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
       annotations:
+        # This annotation is used by the helm hook to detect changes in the configmap and secrets
         checksum/secrets: {{ include (print $.Template.BasePath "/external-secret.yaml") . | sha256sum }}
     spec:
     {{- with .Values.imagePullSecrets }}
